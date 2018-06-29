@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="8dp"
+    android:layout_marginTop="8dp"
+    android:padding="4dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/title_source"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/source_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            tools:src="@drawable/ic_launcher_foreground"/>
+        <TextView
+            android:id="@+id/article_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textSize="20sp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/colorPrimary"
+            tools:text="ARTICLE NAME SHOULD BE WRITTEN HERE AND WRAP TO THREE LINES..."/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/football_news_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Date of Article"/>
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+        <TextView
+            android:id="@+id/football_news_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Time Stamp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textColor="@color/colorAccent"
+            android:text="READ MORE >   "/>
+    </LinearLayout>
+
+</LinearLayout>
