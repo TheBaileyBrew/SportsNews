@@ -40,9 +40,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        footballListView = findViewById(R.id.nfl_news_list);
+
         noActiveNetwork = findViewById(R.id.no_network_layout);
         loadingScreen = findViewById(R.id.loading_layout);
+        footballListView = findViewById(R.id.nfl_news_list);
 
         footballAdapter = new FootballAdapter(this,new ArrayList<Football>());
         footballListView.setAdapter(footballAdapter);
