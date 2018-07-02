@@ -12,7 +12,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class FootballAdapter extends ArrayAdapter<Football> {
+    //ButterKnife Views to Bind
+    @BindView(R.id.article_title) private TextView articleTitleDisplay;
+    @BindView(R.id.football_news_date) private TextView articleDateDisplay;
+    @BindView(R.id.football_news_time) private TextView articleTimeDisplay;
+    @BindView(R.id.source_image) private ImageView articleSourceDisplay;
 
     public FootballAdapter(Activity context, ArrayList<Football> FootballNews) {
         super(context, 0, FootballNews);
@@ -23,22 +31,18 @@ public class FootballAdapter extends ArrayAdapter<Football> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.football_list_item, parent, false);
         }
-
+        ButterKnife.bind(this, convertView);
         Football currentNews = getItem(position);
         //Sets the title of article
-        TextView articleTitleDisplay = convertView.findViewById(R.id.article_title);
         String articleTitle = currentNews.getArticleName();
         articleTitleDisplay.setText(articleTitle);
         //Sets the date of article posting
-        TextView articleDateDisplay = convertView.findViewById(R.id.football_news_date);
         String articleDate = currentNews.getArticleDate();
         articleDateDisplay.setText(articleDate);
         //Sets the time of article posting
-        TextView articleTimeDisplay = convertView.findViewById(R.id.football_news_time);
         String articleTime = currentNews.getArticleTime();
         articleTimeDisplay.setText(articleTime);
         //Sets the icon drawable for category
-        ImageView articleSourceDisplay = convertView.findViewById(R.id.source_image);
         String articleSource = currentNews.getArticleCategory();
         switch (articleSource) {
             case "News":
@@ -50,7 +54,6 @@ public class FootballAdapter extends ArrayAdapter<Football> {
             default:
                 break;
         }
-
         return convertView;
     }
 }
