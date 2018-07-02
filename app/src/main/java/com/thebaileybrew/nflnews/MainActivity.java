@@ -9,13 +9,18 @@ import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private FootballAdapter footballAdapter;
     private static final int FOOTBALL_LOADER_ID = 1;
-
+    SwipeRefreshLayout mySwipeRefreshLayout;
     ListView footballListView;
     RelativeLayout noActiveNetwork;
     RelativeLayout loadingScreen;
@@ -39,7 +44,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+        mySwipeRefreshLayout = findViewById(R.id.swipe_refresh);
+        mySwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.i(LOG_TAG, "onRefresh: ");
+                getLoaderManager().destroyLoader(FOOTBALL_LOADER_ID);
+                footballAdapter.clear();
+                getDataRefresh();
+            }
+        });
 
         noActiveNetwork = findViewById(R.id.no_network_layout);
         loadingScreen = findViewById(R.id.loading_layout);
@@ -60,9 +76,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         });
 
         if (isNetworkAvailable()) {
-            LoaderManager loaderManager = getLoaderManager();
+            getDataRefresh();
 
-            loaderManager.initLoader(FOOTBALL_LOADER_ID, null, this);
         } else {
             loadingScreen.setVisibility(GONE);
 
@@ -74,6 +89,31 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
     }
+
+    private void getDataRefresh() {
+        LoaderManager loaderManager = getLoaderManager();
+        loaderManager.initLoader(FOOTBALL_LOADER_ID, null, this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.refresh:
+                mySwipeRefreshLayout.setRefreshing(true);
+                getLoaderManager().destroyLoader(FOOTBALL_LOADER_ID);
+                getDataRefresh();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     @Override
     public Loader<List<Football>> onCreateLoader(int id, Bundle args) {
@@ -100,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         }
         noActiveNetwork.setVisibility(View.INVISIBLE);
         footballAdapter.addAll(FootballNews);
+        mySwipeRefreshLayout.setRefreshing(false);
 
 
 
