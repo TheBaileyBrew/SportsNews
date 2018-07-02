@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="standard_margin_8dp">8dp</dimen>
+    <dimen name="standard_text_18sp">18sp</dimen>
+    <dimen name="medium_text_22sp">22sp</dimen>
+    <dimen name="view_break_size_4dp">4dp</dimen>
+    <dimen name="source_image_size_100dp">100dp</dimen>
+    <dimen name="small_padding_4dp">4dp</dimen>
+    <dimen name="standard_text_16sp">16sp</dimen>
+    <dimen name="standard_text_20sp">20sp</dimen>
+</resources>

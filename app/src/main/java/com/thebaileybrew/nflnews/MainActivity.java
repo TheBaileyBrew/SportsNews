@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 Log.i(LOG_TAG, "onRefresh: ");
                 getLoaderManager().destroyLoader(FOOTBALL_LOADER_ID);
                 footballAdapter.clear();
-                getDataRefresh();
+                checkForNetwork();
             }
         });
 
@@ -74,20 +74,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 startActivity(websiteIntent);
             }
         });
+        checkForNetwork();
+    }
 
+    private void checkForNetwork() {
         if (isNetworkAvailable()) {
+            noActiveNetwork.setVisibility(View.INVISIBLE);
             getDataRefresh();
-
         } else {
             loadingScreen.setVisibility(GONE);
-
+            noActiveNetwork.setVisibility(View.VISIBLE);
             footballListView.setEmptyView(noActiveNetwork);
+            mySwipeRefreshLayout.setRefreshing(false);
         }
-
-
-
-
-
     }
 
     private void getDataRefresh() {
@@ -106,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         switch(item.getItemId()) {
             case R.id.refresh:
                 mySwipeRefreshLayout.setRefreshing(true);
+                checkForNetwork();
                 getLoaderManager().destroyLoader(FOOTBALL_LOADER_ID);
                 getDataRefresh();
                 return true;

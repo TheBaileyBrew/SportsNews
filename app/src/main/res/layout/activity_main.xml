@@ -21,7 +21,7 @@
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="50dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -49,7 +49,8 @@
             android:layout_width="325dp"
             android:layout_height="325dp"
             android:indeterminate="true"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:theme="@style/Indeterminate"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -57,15 +58,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:alpha="0.35"
+            android:src="@drawable/nfl_logo"/>
         <TextView
             android:id="@+id/no_network_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="@dimen/standard_text_20sp"
+            android:textColor="@color/colorAccent"
             android:text="No Active Network Connection"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_centerInParent="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/no_network_message"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/standard_text_16sp"
+            android:text="Please check your 3G / WiFi settings and refresh"/>
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

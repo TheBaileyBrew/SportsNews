@@ -139,7 +139,8 @@ public class QueryUtils {
                 String [] dateAndTime;
                 dateAndTime = rawdate.split("T");
                 date = dateAndTime[0];
-                time = dateAndTime[1];
+                String [] rawTime = dateAndTime[1].split("Z");
+                time = rawTime[0];
                 Log.v("date", date);
                 Log.v("time", time);
                 //Add each record to the ArrayList
