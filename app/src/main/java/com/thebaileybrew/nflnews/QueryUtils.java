@@ -17,6 +17,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class QueryUtils {
     //Tag for LOG message
@@ -110,6 +111,7 @@ public class QueryUtils {
         String time;
         String source;
         String url;
+        String author;
         //Checks the JSON string for empty/null -- returns early if null
         if (TextUtils.isEmpty(newsJSON)) {
             return null;
@@ -143,8 +145,23 @@ public class QueryUtils {
                 time = rawTime[0];
                 Log.v("date", date);
                 Log.v("time", time);
+                //Extract the authors name
+                JSONArray authorArray = currentNews.getJSONArray("tags");
+                JSONObject currentAuthor = authorArray.getJSONObject(0);
+                String authorName = currentAuthor.getString("webTitle");
+                //Concatenation of author name and type of author (pulled from JSON)
+                StringBuilder authorBuilder = new StringBuilder();
+                authorBuilder.append(authorName);
+                //Check for 2nd author
+                if (authorArray.length() > 1 ){
+                    JSONObject secondaryAuthor = authorArray.getJSONObject(1);
+                    String secondAuthor = secondaryAuthor.getString("webTitle");
+                    authorBuilder.append(" & ");
+                    authorBuilder.append(secondAuthor);
+                }
+                author = authorBuilder.toString();
                 //Add each record to the ArrayList
-                FootballNews.add(new Football(title,date,time,url,source));
+                FootballNews.add(new Football(title,date,time,url,source, author));
             }
         } catch (JSONException je) {
             Log.e(LOG_TAG, "Problem extracting JSON results ", je);

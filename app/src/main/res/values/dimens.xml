@@ -8,4 +8,8 @@
     <dimen name="small_padding_4dp">4dp</dimen>
     <dimen name="standard_text_16sp">16sp</dimen>
     <dimen name="standard_text_20sp">20sp</dimen>
+    <dimen name="large_margin_16dp">16dp</dimen>
+    <dimen name="small_margin_4dp">4dp</dimen>
+    <dimen name="source_image_size_75dp">75dp</dimen>
+    <dimen name="large_text_26sp">26sp</dimen>
 </resources>

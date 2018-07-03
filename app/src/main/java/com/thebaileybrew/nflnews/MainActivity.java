@@ -26,24 +26,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Football>> {
     private static final String LOG_TAG = MainActivity.class.getName();
 
-    private static final String REQUEST_URL_ONE =
-            "https://content.guardianapis.com/search?from-date=2018-06-01&to-date=2018-07-01&q=NFL&api-key=9722bfef-08bf-4706-b3f0-a914a1dc5339";
+    private String requestUrl;
 
     private FootballAdapter footballAdapter;
     private static final int FOOTBALL_LOADER_ID = 1;
     SwipeRefreshLayout mySwipeRefreshLayout;
     ListView footballListView;
+    RelativeLayout emptyLayout;
     RelativeLayout noActiveNetwork;
+    RelativeLayout noNewsAvailable;
     RelativeLayout loadingScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        requestUrl = "https://content.guardianapis.com/search?from-date=2018-06-01&to-date=2018-08-01&q=NFL&api-key=9722bfef-08bf-4706-b3f0-a914a1dc5339&show-tags=contributor&page-size=20";
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         mySwipeRefreshLayout = findViewById(R.id.swipe_refresh);
@@ -58,8 +61,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         });
 
         noActiveNetwork = findViewById(R.id.no_network_layout);
+        noNewsAvailable = findViewById(R.id.no_news_layout);
         loadingScreen = findViewById(R.id.loading_layout);
         footballListView = findViewById(R.id.nfl_news_list);
+        emptyLayout = findViewById(R.id.empty_layout);
 
         footballAdapter = new FootballAdapter(this,new ArrayList<Football>());
         footballListView.setAdapter(footballAdapter);
@@ -77,19 +82,23 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         checkForNetwork();
     }
 
+    //Updates the display if there is a network available
     private void checkForNetwork() {
         if (isNetworkAvailable()) {
             noActiveNetwork.setVisibility(View.INVISIBLE);
             getDataRefresh();
         } else {
+            getLoaderManager().destroyLoader(FOOTBALL_LOADER_ID);
             loadingScreen.setVisibility(GONE);
             noActiveNetwork.setVisibility(View.VISIBLE);
-            footballListView.setEmptyView(noActiveNetwork);
+            noNewsAvailable.setVisibility(View.INVISIBLE);
+            footballListView.setEmptyView(emptyLayout);
             mySwipeRefreshLayout.setRefreshing(false);
         }
     }
-
+    //Creates the Loader
     private void getDataRefresh() {
+        getLoaderManager().destroyLoader(FOOTBALL_LOADER_ID);
         LoaderManager loaderManager = getLoaderManager();
         loaderManager.initLoader(FOOTBALL_LOADER_ID, null, this);
     }
@@ -106,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             case R.id.refresh:
                 mySwipeRefreshLayout.setRefreshing(true);
                 checkForNetwork();
-                getLoaderManager().destroyLoader(FOOTBALL_LOADER_ID);
                 getDataRefresh();
                 return true;
             default:
@@ -117,33 +125,45 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<List<Football>> onCreateLoader(int id, Bundle args) {
-        return new FootballLoader(this, REQUEST_URL_ONE);
+        return new FootballLoader(this, requestUrl);
     }
 
     @Override
     public void onLoadFinished(Loader<List<Football>> loader, List<Football> FootballNews) {
         if (!isNetworkAvailable()) {
-            footballListView.setEmptyView(noActiveNetwork);
+            footballListView.setEmptyView(emptyLayout);
             //set NO Network Display
         }
         footballAdapter.clear();
 
         //Check for valid dataset
         //add to adapter data set. This will trigger ListView to update
+        //Rechecks for Network availability
         if (isNetworkAvailable()) {
             loadingScreen.setVisibility(View.INVISIBLE);
             noActiveNetwork.setVisibility(View.INVISIBLE);
-        }
-        if (FootballNews != null && !FootballNews.isEmpty()) {
+            noNewsAvailable.setVisibility(View.INVISIBLE);
+            if (FootballNews == null) {
+                loadingScreen.setVisibility(View.INVISIBLE);
+                noActiveNetwork.setVisibility(View.INVISIBLE);
+                noNewsAvailable.setVisibility(VISIBLE);
+            } else {
+                noActiveNetwork.setVisibility(View.INVISIBLE);
+                noNewsAvailable.setVisibility(View.INVISIBLE);
+            }
+            //Checks to verify that ArrayList has data
+            if (FootballNews != null && !FootballNews.isEmpty()) {
+                loadingScreen.setVisibility(View.INVISIBLE);
+                noActiveNetwork.setVisibility(View.INVISIBLE);
+                noNewsAvailable.setVisibility(View.INVISIBLE);
+                footballAdapter.addAll(FootballNews);
+                mySwipeRefreshLayout.setRefreshing(false);
+            }
+        } else if (!isNetworkAvailable()) {
             loadingScreen.setVisibility(View.INVISIBLE);
-            noActiveNetwork.setVisibility(View.INVISIBLE);
+            noActiveNetwork.setVisibility(VISIBLE);
+            noNewsAvailable.setVisibility(View.INVISIBLE);
         }
-        noActiveNetwork.setVisibility(View.INVISIBLE);
-        footballAdapter.addAll(FootballNews);
-        mySwipeRefreshLayout.setRefreshing(false);
-
-
-
     }
 
     @Override

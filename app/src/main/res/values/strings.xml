@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">NFL News</string>
+    <string name="check_yo_wifi">Please check your 3G / WiFi settings and refresh</string>
+    <string name="no_connection_today">No Active Network Connection</string>
+    <string name="got_nothing_for_ya">No News Available</string>
+    <string name="refresh_and_check_later">Please refresh or check back later</string>
+    <string name="REQUEST_URL_ONE"><![CDATA[https://content.guardianapis.com/search?from–date=2018–06–01&to–date=2018–08–01&q=NFL&api–key=9722bfef–08bf–4706–b3f0–a914a1dc5339&show–tags=contributor&page–size=20]]></string>
+    <string name="read_more"><![CDATA[READ MORE >   ]]></string>
 </resources>

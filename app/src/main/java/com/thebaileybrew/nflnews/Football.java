@@ -6,13 +6,15 @@ public class Football {
     public String articleTime; //webPublicationDate
     public String articleUrl; //webUrl
     public String articleCategory; //pillarName
+    public String articleAuthor;
 
-    public Football (String articleName, String articleDate, String articleTime, String articleUrl, String articleCategory) {
+    public Football (String articleName, String articleDate, String articleTime, String articleUrl, String articleCategory, String articleAuthor) {
         this.articleName = articleName;
         this.articleDate = articleDate;
         this.articleTime = articleTime;
         this.articleUrl = articleUrl;
         this.articleCategory = articleCategory;
+        this.articleAuthor = articleAuthor;
     }
 
     public String getArticleName() {
@@ -29,5 +31,8 @@ public class Football {
     }
     public String getArticleCategory() {
         return articleCategory;
+    }
+    public String getArticleAuthor() {
+        return articleAuthor;
     }
 }

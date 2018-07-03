@@ -27,7 +27,9 @@ public class FootballAdapter extends ArrayAdapter<Football> {
         TextView articleTitleDisplay = convertView.findViewById(R.id.article_title);
         TextView articleDateDisplay = convertView.findViewById(R.id.football_news_date);
         TextView articleTimeDisplay = convertView.findViewById(R.id.football_news_time);
+        TextView articleAuthorDisplay = convertView.findViewById(R.id.article_author);
         ImageView articleSourceDisplay = convertView.findViewById(R.id.source_image);
+        TextView articleSourceText = convertView.findViewById(R.id.source_type);
         Football currentNews = getItem(position);
         //Sets the title of article
         String articleTitle = currentNews.getArticleName();
@@ -38,16 +40,25 @@ public class FootballAdapter extends ArrayAdapter<Football> {
         //Sets the time of article posting
         String articleTime = currentNews.getArticleTime();
         articleTimeDisplay.setText(articleTime);
+        //Sets the authors name attached to the article
+        String articleAuthor = currentNews.getArticleAuthor();
+        articleAuthorDisplay.setText(articleAuthor);
         //Sets the icon drawable for category
         String articleSource = currentNews.getArticleCategory();
         switch (articleSource) {
             case "News":
                 articleSourceDisplay.setImageResource(R.drawable.news_vector);
+                articleSourceText.setText(articleSource);
                 break;
             case "Sport":
                 articleSourceDisplay.setImageResource(R.drawable.quarterback_vector);
+                articleSourceText.setText(articleSource);
                 break;
+            case "Opinion":
+                articleSourceDisplay.setImageResource(R.drawable.opinion_vector);
+                articleSourceText.setText(articleSource);
             default:
+                articleSourceText.setText(articleSource);
                 break;
         }
         return convertView;
