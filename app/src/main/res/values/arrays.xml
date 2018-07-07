@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="entries_list_preference">
+        <item>American Football</item>
+        <item>Soccer (Football)</item>
+        <item>Basketball</item>
+        <item>Hockey</item>
+        <item>Baseball</item>
+    </string-array>
+    <string-array name="entryvalues_list_preference">
+        <item>NFL</item>
+        <item>Football</item>
+        <item>Basketball</item>
+        <item>Hockey</item>
+        <item>Baseball</item>
+    </string-array>
+</resources>

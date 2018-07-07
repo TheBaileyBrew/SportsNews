@@ -6,4 +6,21 @@
     <string name="refresh_and_check_later">Please refresh or check back later</string>
     <string name="REQUEST_URL_ONE"><![CDATA[https://content.guardianapis.com/search?from–date=2018–06–01&to–date=2018–08–01&q=NFL&api–key=9722bfef–08bf–4706–b3f0–a914a1dc5339&show–tags=contributor&page–size=20]]></string>
     <string name="read_more"><![CDATA[READ MORE >   ]]></string>
+
+    <string name="settings_start_date">Starting Date</string>
+    <string name="settings_start_date_key">edittext_date_start</string>
+    <string name="settings_start_date_default">2018–06–01</string>
+
+    <string name="settings_end_date">Ending Date</string>
+    <string name="settings_end_date_key">edittext_date_end</string>
+    <string name="settings_end_date_default">2018–07–01</string>
+
+    <string name="settings_other_category">Other Category</string>
+    <string name="title_date_start_preference">Starting Date</string>
+    <string name="title_date_end_preference">Ending Date</string>
+
+    <string name="dialog_title_list_preference">Choose Your Sport</string>
+    <string name="title_list_preference">Other News Selector</string>
+    <string name="settings_category_key">list_preference</string>
+    <string name="settings_category_default">NFL</string>
 </resources>
