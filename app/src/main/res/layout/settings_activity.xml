@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<fragment class="com.thebaileybrew.nflnews.FootballSettings$FootballPreferenceFragment"
+<fragment class="com.thebaileybrew.sportsnews.FootballSettings$FootballPreferenceFragment"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="50dp"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.thebaileybrew.nflnews.FootballSettings"
+    tools:context="com.thebaileybrew.sportsnews.FootballSettings"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 </fragment>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NFL News</string>
+    <string name="app_name">Sports News</string>
     <string name="check_yo_wifi">Please check your 3G / WiFi settings and refresh</string>
     <string name="no_connection_today">No Active Network Connection</string>
     <string name="got_nothing_for_ya">No News Available</string>
@@ -9,11 +9,11 @@
 
     <string name="settings_start_date">Starting Date</string>
     <string name="settings_start_date_key">edittext_date_start</string>
-    <string name="settings_start_date_default">2018–06–01</string>
+    <string name="settings_start_date_default">2018-06-01</string>
 
     <string name="settings_end_date">Ending Date</string>
     <string name="settings_end_date_key">edittext_date_end</string>
-    <string name="settings_end_date_default">2018–07–01</string>
+    <string name="settings_end_date_default">2018-07-01</string>
 
     <string name="settings_other_category">Other Category</string>
     <string name="title_date_start_preference">Starting Date</string>
@@ -23,4 +23,13 @@
     <string name="title_list_preference">Other News Selector</string>
     <string name="settings_category_key">list_preference</string>
     <string name="settings_category_default">NFL</string>
+
+    <string name="dialog_title_sort_preference">Choose Your Sorting View</string>
+    <string name="title_sort_preference">Sorting Preference</string>
+    <string name="settings_sort_key">sort_preference</string>
+    <string name="settings_sort_default">Newest</string>
+
+    <string name="startDefault">2018-06-01</string>
+    <string name="endDefault">2018-07-01</string>
+    <string name="categoryDefault">NFL</string>
 </resources>

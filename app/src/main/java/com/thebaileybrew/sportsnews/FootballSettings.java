@@ -1,19 +1,15 @@
-package com.thebaileybrew.nflnews;
+package com.thebaileybrew.sportsnews;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 public class FootballSettings extends AppCompatActivity {
-    static String startDateText;
-    static String endDateText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +32,9 @@ public class FootballSettings extends AppCompatActivity {
 
             Preference category = findPreference(getString(R.string.settings_category_key));
             bindPreferenceSummaryToValue(category);
+
+            Preference orderBy = findPreference(getString(R.string.settings_sort_key));
+            bindPreferenceSummaryToValue(orderBy);
         }
 
         @Override

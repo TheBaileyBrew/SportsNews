@@ -14,4 +14,13 @@
         <item>Hockey</item>
         <item>Baseball</item>
     </string-array>
+
+    <string-array name="entries_sort_preference">
+        <item>Oldest</item>
+        <item>Newest</item>
+    </string-array>
+    <string-array name="entryvalues_sort_preference">
+        <item>Oldest</item>
+        <item>Newest</item>
+    </string-array>
 </resources>

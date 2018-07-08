@@ -1,4 +1,4 @@
-package com.thebaileybrew.nflnews;
+package com.thebaileybrew.sportsnews;
 
 import org.junit.Test;
 

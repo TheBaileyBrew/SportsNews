@@ -6,23 +6,104 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
+    <!-- Filters View-->
+    <LinearLayout
+        android:id="@+id/filters_display"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@color/colorPrimary"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-        <ListView
-            android:id="@+id/nfl_news_list"
+        android:orientation="vertical">
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_marginTop="@dimen/small_margin_4dp"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:text="CURRENT FILTERS"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/small_margin_4dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp">
+            <TextView
+                android:id="@+id/main_filter_start_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="Start Date:"/>
+            <TextView
+                android:id="@+id/main_filter_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                tools:text="@string/settings_start_date_default"/>
+            <TextView
+                android:id="@+id/main_filter_end_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="8dp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="End Date:"/>
+            <TextView
+                android:id="@+id/main_filter_end_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                tools:text="@string/settings_start_date_default"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/small_margin_4dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp">
+            <TextView
+                android:id="@+id/main_filter_sort_by_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="Sport Searched:"/>
+            <TextView
+                android:id="@+id/main_filter_sort_by"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                tools:text="@string/settings_sort_default"/>
+        </LinearLayout>
+    </LinearLayout>
+    <!-- Swipe & Recycler View-->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filters_display"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/nfl_news_list"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="@dimen/large_margin_16dp"
+            android:paddingRight="@dimen/large_margin_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             />
     </android.support.v4.widget.SwipeRefreshLayout>
 
+    <!-- Progress Bar View-->
     <RelativeLayout
         android:id="@+id/loading_layout"
         android:layout_width="match_parent"
@@ -42,12 +123,14 @@
             android:theme="@style/Indeterminate"/>
     </RelativeLayout>
 
+    <!-- No Network Layout-->
     <RelativeLayout
         android:id="@+id/no_network_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible">
         <ImageView
+            android:id="@+id/no_network_drawable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -72,12 +155,14 @@
             android:text="@string/check_yo_wifi"/>
     </RelativeLayout>
 
+    <!-- Empty Layout-->
     <RelativeLayout
         android:id="@+id/empty_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible">
         <ImageView
+            android:id="@+id/empty_drawable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -85,12 +170,14 @@
             android:src="@drawable/nfl_logo"/>
     </RelativeLayout>
 
+    <!-- No News Layout-->
     <RelativeLayout
         android:id="@+id/no_news_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible">
         <ImageView
+            android:id="@+id/no_news_drawable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"

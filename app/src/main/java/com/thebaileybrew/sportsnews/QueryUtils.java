@@ -1,4 +1,4 @@
-package com.thebaileybrew.nflnews;
+package com.thebaileybrew.sportsnews;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,15 +17,14 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class QueryUtils {
     //Tag for LOG message
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
     private QueryUtils() { }
-    //Query the Guardian dataset and return the list of (@link Football) objects
-    public static List<Football> fetchNewsData(String requestedUrl) {
+    //Query the Guardian dataset and return the list of (@link Sport) objects
+    public static List<Sport> fetchNewsData(String requestedUrl) {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ie) {
@@ -40,10 +39,10 @@ public class QueryUtils {
         } catch (IOException ioe) {
             Log.e(LOG_TAG, "fetchNewsData: Problem making HTTP Request.", ioe);
         }
-        //Extract the relevant fiels from the JSON response and create a list of Football news
-        List<Football> FootballNews = extractNewsFromJson(jsonResponse);
+        //Extract the relevant fiels from the JSON response and create a list of Sport news
+        List<Sport> sportNews = extractNewsFromJson(jsonResponse);
         Log.v("Fetch Method", "Yes");
-        return FootballNews;
+        return sportNews;
     }
     //Returns a hew URL object from the given String URL
     private static URL createUrl(String requestedUrl) {
@@ -105,7 +104,7 @@ public class QueryUtils {
         return output.toString();
     }
     //Return the List<> extracted from the JSON data
-    private static List<Football> extractNewsFromJson(String newsJSON) {
+    private static List<Sport> extractNewsFromJson(String newsJSON) {
         String title;
         String date;
         String time;
@@ -116,7 +115,7 @@ public class QueryUtils {
         if (TextUtils.isEmpty(newsJSON)) {
             return null;
         }
-        List<Football> FootballNews = new ArrayList<>();
+        List<Sport> sportNews = new ArrayList<>();
         try {
             JSONObject baseJsonResponse = new JSONObject(newsJSON);
             Log.v("Json Array", "NewsArray");
@@ -161,11 +160,11 @@ public class QueryUtils {
                 }
                 author = authorBuilder.toString();
                 //Add each record to the ArrayList
-                FootballNews.add(new Football(title,date,time,url,source, author));
+                sportNews.add(new Sport(title,date,time,url,source, author));
             }
         } catch (JSONException je) {
             Log.e(LOG_TAG, "Problem extracting JSON results ", je);
         }
-        return FootballNews;
+        return sportNews;
     }
 }

@@ -1,4 +1,4 @@
-package com.thebaileybrew.nflnews;
+package com.thebaileybrew.sportsnews;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
@@ -6,15 +6,15 @@ import android.util.Log;
 
 import java.util.List;
 
-public class FootballLoader extends AsyncTaskLoader<List<Football>> {
+public class SportLoader extends AsyncTaskLoader<List<Sport>> {
 
-    private static final String LOG_TAG = FootballLoader.class.getName();
+    private static final String LOG_TAG = SportLoader.class.getName();
 
     private String mUrl;
 
 
 
-    public FootballLoader(Context context, String url) {
+    public SportLoader(Context context, String url) {
         super(context);
         mUrl = url;
 
@@ -27,14 +27,14 @@ public class FootballLoader extends AsyncTaskLoader<List<Football>> {
     }
 
     @Override
-    public List<Football> loadInBackground() {
+    public List<Sport> loadInBackground() {
         if (mUrl == null) {
             return null;
         }
 
-        List<Football> GamesNews = QueryUtils.fetchNewsData(mUrl);
+        List<Sport> SportsNews = QueryUtils.fetchNewsData(mUrl);
 
         Log.v("Loading on background", "yes");
-        return GamesNews;
+        return SportsNews;
     }
 }

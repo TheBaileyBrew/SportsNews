@@ -1,6 +1,6 @@
-package com.thebaileybrew.nflnews;
+package com.thebaileybrew.sportsnews;
 
-public class Football {
+public class Sport {
     public String articleName; //webTitle
     public String articleDate; //webPublicationDate
     public String articleTime; //webPublicationDate
@@ -8,7 +8,7 @@ public class Football {
     public String articleCategory; //pillarName
     public String articleAuthor;
 
-    public Football (String articleName, String articleDate, String articleTime, String articleUrl, String articleCategory, String articleAuthor) {
+    public Sport(String articleName, String articleDate, String articleTime, String articleUrl, String articleCategory, String articleAuthor) {
         this.articleName = articleName;
         this.articleDate = articleDate;
         this.articleTime = articleTime;

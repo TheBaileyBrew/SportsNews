@@ -1,4 +1,4 @@
-package com.thebaileybrew.nflnews;
+package com.thebaileybrew.sportsnews;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
