@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="50dp"
+    android:layout_marginTop="@dimen/small_margin_6dp"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.thebaileybrew.sportsnews.FootballSettings"
     xmlns:app="http://schemas.android.com/apk/res-auto">

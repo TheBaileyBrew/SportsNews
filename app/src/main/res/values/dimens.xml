@@ -12,4 +12,11 @@
     <dimen name="small_margin_4dp">4dp</dimen>
     <dimen name="source_image_size_75dp">75dp</dimen>
     <dimen name="large_text_26sp">26sp</dimen>
+    <dimen name="indeterminite_logo_175dp">175dp</dimen>
+    <dimen name="indeterminite_progress_325dp">325dp</dimen>
+    <dimen name="filter_view_static_width_350dp">350dp</dimen>
+    <dimen name="filter_view_static_height_75dp">75dp</dimen>
+    <dimen name="filter_text_14sp">14sp</dimen>
+    <dimen name="filter_special_margin_left_12dp">12dp</dimen>
+    <dimen name="small_margin_6dp">6dp</dimen>
 </resources>

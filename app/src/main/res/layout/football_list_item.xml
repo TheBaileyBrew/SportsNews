@@ -8,8 +8,8 @@
     android:layout_marginLeft="@dimen/standard_margin_8dp"
     android:layout_marginRight="@dimen/standard_margin_8dp"
     android:layout_marginTop="@dimen/small_margin_4dp"
-    app:cardCornerRadius="6dp"
-    app:cardElevation="6dp"
+    app:cardCornerRadius="@dimen/small_margin_6dp"
+    app:cardElevation="@dimen/small_margin_6dp"
     android:padding="@dimen/small_padding_4dp">
     <LinearLayout
         android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/standard_text_18sp"
                     android:textColor="@color/colorAccent"
                     tools:text="SPORTS"/>
                 <TextView

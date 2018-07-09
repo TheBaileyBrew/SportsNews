@@ -33,14 +33,14 @@
         android:layout_height="match_parent">
         <ImageView
             android:id="@+id/loading_logo"
-            android:layout_width="175dp"
-            android:layout_height="175dp"
+            android:layout_width="@dimen/indeterminite_logo_175dp"
+            android:layout_height="@dimen/indeterminite_logo_175dp"
             android:src="@drawable/sport"
             android:layout_centerInParent="true" />
         <ProgressBar
             android:id="@+id/loading_progress"
-            android:layout_width="325dp"
-            android:layout_height="325dp"
+            android:layout_width="@dimen/indeterminite_progress_325dp"
+            android:layout_height="@dimen/indeterminite_progress_325dp"
             android:indeterminate="true"
             android:layout_centerInParent="true"
             android:theme="@style/Indeterminate"/>
@@ -129,8 +129,8 @@
     <LinearLayout
         android:id="@+id/filters_display"
         android:visibility="gone"
-        android:layout_width="350dp"
-        android:layout_height="75dp"
+        android:layout_width="@dimen/filter_view_static_width_350dp"
+        android:layout_height="@dimen/filter_view_static_height_75dp"
         android:background="@color/colorPrimaryFade"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -143,23 +143,23 @@
             android:layout_gravity="center_horizontal"
             android:textColor="@color/colorPrimaryText"
             android:layout_marginTop="@dimen/small_margin_4dp"
-            android:textSize="14dp"
+            android:textSize="@dimen/filter_text_14sp"
             android:textStyle="bold"
-            android:text="CURRENT FILTERS"/>
+            android:text="@string/filters_current_header"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/small_margin_4dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp">
+            android:layout_marginLeft="@dimen/standard_margin_8dp"
+            android:layout_marginRight="@dimen/standard_margin_8dp">
             <TextView
                 android:id="@+id/main_filter_start_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="@dimen/standard_margin_8dp"
                 android:textColor="@color/colorPrimaryText"
-                android:text="Start Date:"/>
+                android:text="@string/filter_start_date"/>
             <TextView
                 android:id="@+id/main_filter_start_date"
                 android:layout_width="wrap_content"
@@ -170,10 +170,10 @@
                 android:id="@+id/main_filter_end_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/filter_special_margin_left_12dp"
+                android:layout_marginRight="@dimen/standard_margin_8dp"
                 android:textColor="@color/colorPrimaryText"
-                android:text="End Date:"/>
+                android:text="@string/filter_end_date"/>
             <TextView
                 android:id="@+id/main_filter_end_date"
                 android:layout_width="wrap_content"
@@ -186,15 +186,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/small_margin_4dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp">
+            android:layout_marginLeft="@dimen/standard_margin_8dp"
+            android:layout_marginRight="@dimen/standard_margin_8dp">
             <TextView
                 android:id="@+id/main_filter_sort_by_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="@dimen/standard_margin_8dp"
                 android:textColor="@color/colorPrimaryText"
-                android:text="Sport Searched:"/>
+                android:text="@string/filter_sport_searched"/>
             <TextView
                 android:id="@+id/main_filter_sort_by"
                 android:layout_width="wrap_content"

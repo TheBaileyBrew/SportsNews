@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
     <item android:id="@+id/current"
-        android:title="Current Filters"
+        android:title="@string/menu_current_filters"
         android:icon="@drawable/ic_details_white_24dp"
         app:showAsAction="ifRoom" />
     <item android:id="@+id/refresh"
-        android:title="Refresh"
+        android:title="@string/menu_refresh"
         android:icon="@drawable/ic_autorenew_white_24dp"
         app:showAsAction="ifRoom"/>
     <item android:id="@+id/settings"
-        android:title="Settings"
+        android:title="@string/menu_settings"
         android:icon="@drawable/ic_filter_list_white_24dp"
         app:showAsAction="ifRoom"/>
 
