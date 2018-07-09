@@ -4,10 +4,10 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginBottom="@dimen/large_margin_16dp"
+    android:layout_marginBottom="@dimen/small_margin_4dp"
     android:layout_marginLeft="@dimen/standard_margin_8dp"
     android:layout_marginRight="@dimen/standard_margin_8dp"
-    android:layout_marginTop="@dimen/standard_margin_8dp"
+    android:layout_marginTop="@dimen/small_margin_4dp"
     app:cardCornerRadius="6dp"
     app:cardElevation="6dp"
     android:padding="@dimen/small_padding_4dp">
@@ -39,8 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/small_margin_4dp"
-                android:layout_marginTop="@dimen/small_margin_4dp"
-                android:layout_marginBottom="@dimen/small_margin_4dp">
+                android:layout_marginTop="@dimen/small_margin_4dp">
                 <TextView
                     android:id="@+id/source_type"
                     android:layout_width="wrap_content"
@@ -87,7 +86,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_margin_4dp"
         android:layout_marginRight="@dimen/standard_margin_8dp"
         android:gravity="end"
         android:textColor="@color/colorAccent"

@@ -18,10 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.thebaileybrew.sportsnews.FootballSettings">
+        <activity android:name="com.thebaileybrew.sportsnews.FootballSettings"
+            android:theme="@style/PreferencesTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.thebaileybrew.sportsnews.MainActivity"/>
+                android:value="com.thebaileybrew.sportsnews.MainActivity" />
         </activity>
     </application>
 

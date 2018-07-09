@@ -9,7 +9,12 @@
     </style>
 
     <style name="Indeterminate">
-        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="PreferencesTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimaryFade</item>
     </style>
 
 </resources>

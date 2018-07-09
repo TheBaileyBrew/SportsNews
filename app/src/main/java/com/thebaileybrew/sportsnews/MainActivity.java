@@ -8,20 +8,19 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -44,11 +43,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private SportsAdapter sportsAdapter;
     RecyclerView footballListView;
+    ConstraintLayout homeScreen;
     RelativeLayout emptyLayout;
     RelativeLayout noActiveNetwork;
     RelativeLayout noNewsAvailable;
     RelativeLayout loadingScreen;
     LinearLayout filtersDisplay;
+    ImageView loadingLogo;
     ImageView noNewsDrawable;
     ImageView noNetworkDrawable;
     ImageView emptyDrawable;
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        homeScreen = findViewById(R.id.home_constraint);
+        loadingLogo = findViewById(R.id.loading_logo);
         noNewsDrawable = findViewById(R.id.no_news_drawable);
         noNetworkDrawable = findViewById(R.id.no_network_drawable);
         emptyDrawable = findViewById(R.id.empty_drawable);
@@ -125,6 +128,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
+            case R.id.current:
+                if (filtersDisplay.getVisibility() == GONE) {
+                    filtersDisplay.setVisibility(VISIBLE);
+                } else {
+                    filtersDisplay.setVisibility(GONE);
+                }
+                return true;
             case R.id.settings:
                 Intent settingsIntent = new Intent(this, FootballSettings.class);
                 startActivity(settingsIntent);
@@ -177,16 +187,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     private void assignFilterValues(String startDate, String endDate, String category) {
-        if (startDate.equals(getString(R.string.startDefault))
-                && endDate.equals(getString(R.string.endDefault))
-                && category.equals(getString(R.string.categoryDefault))) {
-            filtersDisplay.setVisibility(GONE);
-        } else {
-            filtersDisplay.setVisibility(VISIBLE);
-            filteredStartDate.setText(startDate);
-            filteredEndDate.setText(endDate);
-            filteredOrderBy.setText(category);
-        }
+        filteredStartDate.setText(startDate);
+        filteredEndDate.setText(endDate);
+        filteredOrderBy.setText(category);
         assignDrawableResource(category);
     }
 
@@ -209,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 intRes = R.drawable.nba_logo;
                 break;
         }
+        loadingLogo.setImageResource(intRes);
         noNewsDrawable.setImageResource(intRes);
         noNetworkDrawable.setImageResource(intRes);
         emptyDrawable.setImageResource(intRes);

@@ -34,8 +34,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="foregroundImage" value="C:\Users\grumnb\Downloads\Nano Degree\News App\nfl_logo.png" />
+                                      <entry key="backgroundColor" value="232323" />
+                                      <entry key="foregroundImage" value="C:\Users\grumnb\Downloads\Nano Degree\News App\sport.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -66,7 +66,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_filter_list_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_details_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -77,7 +77,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_filter_list_white_24dp" />
+                            <entry key="outputName" value="ic_details_white_24dp" />
                             <entry key="sourceFile" value="C:\Users\grumnb" />
                           </map>
                         </option>

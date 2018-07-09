@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="Sports Settings">
-    <PreferenceCategory
+    android:title="Sports Settings"
+    android:theme="@style/PreferencesTheme">
+
+    <com.thebaileybrew.sportsnews.CustomPreferenceCategory
         android:title="Date Settings">
         <EditTextPreference
             android:key="@string/settings_start_date_key"
@@ -11,8 +13,8 @@
             android:key="@string/settings_end_date_key"
             android:title="@string/title_date_end_preference"
             android:defaultValue="@string/settings_end_date_default"/>
-    </PreferenceCategory>
-    <PreferenceCategory
+    </com.thebaileybrew.sportsnews.CustomPreferenceCategory>
+    <com.thebaileybrew.sportsnews.CustomPreferenceCategory
         android:title="Categories &amp; Sorting">
         <ListPreference
             android:key="@string/settings_category_key"
@@ -28,5 +30,5 @@
             android:dialogTitle="@string/dialog_title_sort_preference"
             android:entries="@array/entries_sort_preference"
             android:entryValues="@array/entryvalues_sort_preference"/>
-    </PreferenceCategory>
+    </com.thebaileybrew.sportsnews.CustomPreferenceCategory>
 </PreferenceScreen>

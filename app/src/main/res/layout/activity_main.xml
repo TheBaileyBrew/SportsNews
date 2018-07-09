@@ -1,21 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
+    android:id="@+id/home_constraint"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <!-- Filters View-->
-    <LinearLayout
-        android:id="@+id/filters_display"
-        android:visibility="visible"
+    <!-- Swipe & Recycler View-->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@color/colorPrimary"
+        android:layout_height="match_parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/nfl_news_list"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="@dimen/large_margin_16dp"
+            android:paddingRight="@dimen/large_margin_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <!-- Progress Bar View-->
+    <RelativeLayout
+        android:id="@+id/loading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/loading_logo"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:src="@drawable/sport"
+            android:layout_centerInParent="true" />
+        <ProgressBar
+            android:id="@+id/loading_progress"
+            android:layout_width="325dp"
+            android:layout_height="325dp"
+            android:indeterminate="true"
+            android:layout_centerInParent="true"
+            android:theme="@style/Indeterminate"/>
+    </RelativeLayout>
+
+    <!-- No Network Layout-->
+    <RelativeLayout
+        android:id="@+id/no_network_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+        <ImageView
+            android:id="@+id/no_network_drawable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:alpha="0.35"
+            android:src="@drawable/sport"/>
+        <TextView
+            android:id="@+id/no_network_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="@dimen/large_text_26sp"
+            android:textColor="@color/colorAccent"
+            android:text="@string/no_connection_today"
+            android:layout_centerInParent="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/no_network_message"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/standard_text_20sp"
+            android:text="@string/check_yo_wifi"/>
+    </RelativeLayout>
+
+    <!-- Empty Layout-->
+    <RelativeLayout
+        android:id="@+id/empty_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+        <ImageView
+            android:id="@+id/empty_drawable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:alpha="0.05"
+            android:src="@drawable/sport"/>
+    </RelativeLayout>
+
+    <!-- No News Layout-->
+    <RelativeLayout
+        android:id="@+id/no_news_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+        <ImageView
+            android:id="@+id/no_news_drawable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:alpha="0.35"
+            android:src="@drawable/nfl_logo"/>
+        <TextView
+            android:id="@+id/no_news_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="@dimen/large_text_26sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="@string/got_nothing_for_ya"
+            android:layout_centerInParent="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/no_news_message"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/standard_text_20sp"
+            android:text="@string/refresh_and_check_later"/>
+    </RelativeLayout>
+
+    <!-- Filters View-->
+    <LinearLayout
+        android:id="@+id/filters_display"
+        android:visibility="gone"
+        android:layout_width="350dp"
+        android:layout_height="75dp"
+        android:background="@color/colorPrimaryFade"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="6dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
@@ -83,124 +203,6 @@
                 tools:text="@string/settings_sort_default"/>
         </LinearLayout>
     </LinearLayout>
-    <!-- Swipe & Recycler View-->
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filters_display"
-        app:layout_constraintBottom_toBottomOf="parent">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/nfl_news_list"
-            android:background="@color/colorPrimary"
-            android:paddingLeft="@dimen/large_margin_16dp"
-            android:paddingRight="@dimen/large_margin_16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            />
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-    <!-- Progress Bar View-->
-    <RelativeLayout
-        android:id="@+id/loading_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/nfl_loading_logo"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/nfl_logo"
-            android:layout_centerInParent="true" />
-        <ProgressBar
-            android:id="@+id/loading_progress"
-            android:layout_width="325dp"
-            android:layout_height="325dp"
-            android:indeterminate="true"
-            android:layout_centerInParent="true"
-            android:theme="@style/Indeterminate"/>
-    </RelativeLayout>
-
-    <!-- No Network Layout-->
-    <RelativeLayout
-        android:id="@+id/no_network_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible">
-        <ImageView
-            android:id="@+id/no_network_drawable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:alpha="0.35"
-            android:src="@drawable/nfl_logo"/>
-        <TextView
-            android:id="@+id/no_network_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="@dimen/large_text_26sp"
-            android:textColor="@color/colorAccent"
-            android:text="@string/no_connection_today"
-            android:layout_centerInParent="true" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/no_network_message"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/standard_text_20sp"
-            android:text="@string/check_yo_wifi"/>
-    </RelativeLayout>
-
-    <!-- Empty Layout-->
-    <RelativeLayout
-        android:id="@+id/empty_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible">
-        <ImageView
-            android:id="@+id/empty_drawable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:alpha="0.05"
-            android:src="@drawable/nfl_logo"/>
-    </RelativeLayout>
-
-    <!-- No News Layout-->
-    <RelativeLayout
-        android:id="@+id/no_news_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible">
-        <ImageView
-            android:id="@+id/no_news_drawable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:alpha="0.35"
-            android:src="@drawable/nfl_logo"/>
-        <TextView
-            android:id="@+id/no_news_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="@dimen/large_text_26sp"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="@string/got_nothing_for_ya"
-            android:layout_centerInParent="true" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/no_news_message"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/standard_text_20sp"
-            android:text="@string/refresh_and_check_later"/>
-    </RelativeLayout>
 
 
 
