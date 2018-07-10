@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.SportHolder> {
@@ -52,7 +51,11 @@ public class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.SportHolde
     //Return the Array Size
     @Override
     public int getItemCount() {
-        return SportsDatabase.size();
+        if (SportsDatabase == null) {
+            return 0;
+        } else {
+            return SportsDatabase.size();
+        }
     }
 
     //Define and pair your custom holder views
